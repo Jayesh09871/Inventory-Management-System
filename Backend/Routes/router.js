@@ -58,3 +58,15 @@ res.status(200).json(updateProducts);
     }
 })
 
+router.delete('/deleteproduct/:id',async(req,res)=>{
+    try{
+        const deleteproduct = await products.findByIdAndDelete(req.params.id);
+        console.log('Data Deleted');
+        res.status(201).json(deleteproduct);
+    }catch(err){
+        console.log(err);
+    }
+})
+
+
+module.exports = router;
